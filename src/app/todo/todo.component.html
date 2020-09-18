@@ -1,0 +1,24 @@
+<section class="todoapp">
+    <header>
+        <input class="new-todo" placeholder="Nhập công việc cần làm ..." (keyup.enter)="createTodo()" [(ngModel)]="newTodo.title">
+    </header>
+    <div class="main" *ngIf="todos.length > 0">
+        <nav class="todo-list">
+            <div *ngFor="let todo of todos" [class.completed]="todo.comlete">
+                <div class="item">
+                    <input class="toggle" type="checkbox" (click)="completeTodo(todo)" [checked]="todo.complete">
+                    <label class="title">
+                        {{todo.title}}
+                    </label>
+                    <button class="destroy" (click)="deleteTodo(todo)">x</button>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    <div *ngIf="todos.length > 0">
+        <span class="total">
+            Tổng cộng: <strong>{{todos.length}}</strong>
+        </span>
+    </div>
+</section>
